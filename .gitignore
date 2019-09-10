@@ -59,3 +59,12 @@ typings/
 
 # next.js build output
 .next
+
+# OS-specific cache files
+.DS_Store?
+*.DS_Store
+.Trash-1000
+desktop.ini
+Thumbs.db
+ehthumbs.db
+Icon?
