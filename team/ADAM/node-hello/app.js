@@ -5,6 +5,9 @@ console.log('x:' + x);
 console.log('x:', x);
 console.log(`x: ${x}`);
 
+x = 'ADAM';
+console.log('x: ', x);
+
 var person = {
     firstname: 'Filip',
     lastname: 'Adamovic',
