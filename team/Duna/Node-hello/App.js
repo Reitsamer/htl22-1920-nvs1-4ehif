@@ -16,3 +16,13 @@ var person = {
 
 console.log(person);
 console.log(`${person.firstname} ${person.lastname} is ${person.age} years old.`)
+
+console.log()
+
+//neue datei
+
+
+const os = require('os');
+var x= os.userInfo()
+console.log(x)
+console.log('Hallo, '+ x.username+'!')
