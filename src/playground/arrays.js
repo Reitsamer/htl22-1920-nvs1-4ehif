@@ -33,7 +33,10 @@ numbers.forEach(number => {
 console.log()
 
 var result = numbers.filter(number => {
-  return number % 2 === 0;
+  return number % 2 === 0
 })
+
+
+var result = numbers.filter(number => number % 2 === 0)
 
 console.log('Result: ', result)
