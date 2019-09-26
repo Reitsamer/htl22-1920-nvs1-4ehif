@@ -1,7 +1,18 @@
-const os = require('os')
+console.log('Hello 4EHIF!')
 
-var x = os.userInfo()
+var x = 10
+console.log('x:'+x)
+console.log('x:',x)
+console.log(`x:${x}`)
 
-console.log(x)
+x = 'SLOG'
+console.log('x:',x)
 
-console.log('Hallo, '+x.username + '!')
+var person = {
+    firstname: 'Yigi',
+    lastname: 'Gigi',
+    age: 22,
+    address: '1210, Hollywoodstraze'
+}
+
+console.log(`${person.firstname} ${person.lastname} is ${person.age} years old.`)
