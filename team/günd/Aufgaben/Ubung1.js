@@ -43,3 +43,13 @@ tisch.forEach(y =>{
     console.log(`${y.Nachname} ${y.Vorname}`)
 })
 //6
+const fs = require('fs')
+try {
+    const data = fs.readFileSync('persons.db', 'utf8')
+    var personData = JSON.parse(data);
+  } catch (err) {
+    console.error(err)
+  }
+  personData.forEach(person => {
+    console.log(`${person.lastname}, ${person.firstname}`);
+});
