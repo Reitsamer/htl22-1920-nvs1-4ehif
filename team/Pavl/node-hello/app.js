@@ -18,4 +18,4 @@ var person={
 }
 console.log(person);
 console.log(person.firstname);
-console.log(`${person.firstname} ${person.lastname} is ${person.age} years old`);//template string back tick 
+console.log(`${person.firstname} ${person.lastname} is ${person.age} years old`);
