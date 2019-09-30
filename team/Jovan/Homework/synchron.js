@@ -50,7 +50,7 @@ perarray.forEach(p=>{
     console.log(`Person number ${i} (alphabeticly) is called ${p.lastname}, ${p.firstname}`)
 }) 
 //6
-var fs = require('fs');
+/*var fs = require('fs');
 var isurehopethisworks = fs.readFileSync("htl22-1920-nvs1-4ehif/team/Jovan/Homework/persons.db").toString();
 isurehopethisworks = isurehopethisworks.substring(3,isurehopethisworks.length-3)
 console.log(isurehopethisworks)
@@ -92,4 +92,10 @@ itworked.forEach(per=>{
 })
 perarray2.forEach(per=>{
     console.log(per)
-})
+})*/
+var fs = require('fs');
+const data = fs.readFileSync('htl22-1920-nvs1-4ehif/team/Jovan/Homework/persons.db', 'utf8')
+var dat = JSON.parse(data)
+
+
+dat.forEach(s => console.log(s))
