@@ -36,10 +36,32 @@ var arrayVonObjekten=[
     }
 ];
 
+//Aufgabe 4
 arrayVonObjekten.forEach(element => {
     console.log(`${element.surname} ${element.firstname}`)
 });
 
+console.log();
+
+//Aufgabe 5
 console.log('Sortierte Ausgabe')
-arrayVonObjekten.sort(function(a,b) {return b-a});
+arrayVonObjekten.sort(
+function(a,b)
+{
+    if(a.surname>b.surname)
+    {
+        return 1;
+    }
+    else if(a.surname<b.surname)
+    {
+       return -1;
+    }
+}
+
+);
 console.log(arrayVonObjekten);
+console.log();
+
+//Aufgabe 6
+
+
