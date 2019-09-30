@@ -19,6 +19,16 @@ numbers.forEach(number =>{
     }
 })
 
+function compare( a, b ) {
+    if ( a.last_nom < b.last_nom ){
+      return -1;
+    }
+    if ( a.last_nom > b.last_nom ){
+      return 1;
+    }
+    return 0;
+  }
+  
 console.log(' ');
 
 var result = numbers.filter(number => number % 2 === 0)
