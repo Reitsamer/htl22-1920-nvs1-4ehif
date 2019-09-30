@@ -40,12 +40,13 @@ ob.array.forEach(person => {
 
 //5
 ob.sort(function (x,y) {
-    if(x.lastname>y.lastname)
-    {return 1;}
-    if(x.lastname<y.lastname)
-    {return -1;}
+    if(x.lastname>y.lastname){
+        return 1;
+    }
+    else if(x.lastname<y.lastname)
+            {return -1;}
 
-    return 0; 
+    else return 0; 
     
 });
 
