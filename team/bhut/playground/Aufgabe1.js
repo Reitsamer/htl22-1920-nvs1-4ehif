@@ -8,6 +8,7 @@ console.log(arry);
 
 //3
 var pers1={
+
     firstname:"nakuul",
     lastname:"metha",
     plz:"1220",
