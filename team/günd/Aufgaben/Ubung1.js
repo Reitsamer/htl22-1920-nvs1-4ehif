@@ -1,3 +1,4 @@
+const fs = require('fs')
 // 1
 var x = "Ball";
 console.log(x);
@@ -43,3 +44,9 @@ tisch.forEach(y =>{
     console.log(`${y.Nachname} ${y.Vorname}`)
 })
 //6
+try {
+    const data = fs.readFileSync('persons.db', 'utf8')
+    var person = JSON.parse(data);
+  } catch (err) {
+    console.error(err)
+  }

@@ -39,3 +39,46 @@ persons.forEach(p => {
 });
 
 // 5. Erweitere Punkt 4 dahingehend, dass die Personen alphabetisch sortiert ausgegeben werden.
+persons.sort(function (a, b) {
+    if (a.lastname > b.lastname) {
+        return 1;
+    }
+    if (a.lastname < b.lastname) {
+        return -1;
+    }
+    return 0;
+});
+
+console.log();
+var i = 0;
+persons.forEach(p => {
+    i++;
+    console.log(`Person number ${i} (alphabeticly) is called ${p.lastname}, ${p.firstname}`)
+});
+
+if (process.argv.length !== 3) {
+    console.log("Pass in the path to persons.db or persons.json as command line parameter to see steps ahead.");
+    return;
+}
+
+// 6. Lies die Datei persons.db ein & konvertiere sie in ein JavaScript Objekt.
+var fs = require('fs');
+const data = fs.readFileSync(process.argv[2], 'utf8');
+var dat = JSON.parse(data);
+dat.forEach(s => console.log(s));
+// 7. Verwende die in 6. eingelesenen Personen & gib alle Personen aus, die älter als 18 Jahre alt
+// sind
+// (Hinweis: verwende die Library 'moment' dafür)
+// npm install moment ODER yarn add moment
+var moment = require("moment");
+persons.forEach(p => {
+    var birthdate = moment(p.dateOfBirth, "MMM. D, YYYY");
+    if (!birthdate.isValid()) {
+        console.error(`Invalid birthdate of ${p.dateOfBirth}`);
+        return;
+    }
+    const age = moment().diff(birthdate, 'years');
+    if (age >= 18) {
+        console.log(p);
+    }
+});
