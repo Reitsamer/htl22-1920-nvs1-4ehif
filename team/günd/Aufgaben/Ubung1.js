@@ -47,6 +47,7 @@ tisch.forEach(y =>{
 try {
     const data = fs.readFileSync('persons.db', 'utf8')
     var person = JSON.parse(data);
+    console.log(person)
   } catch (err) {
     console.error(err)
   }
