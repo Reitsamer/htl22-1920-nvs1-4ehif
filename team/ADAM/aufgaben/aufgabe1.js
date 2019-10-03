@@ -49,6 +49,7 @@ function compare(a,b){
     }
     return 0;
 }
+// person.sort((a,b) => a.firstname.localeCompare(b.firstname))
 persons.sort(compare);
 console.log('\n\nSorted the Persons Array\n');
 
