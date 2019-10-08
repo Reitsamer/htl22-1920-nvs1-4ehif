@@ -5,10 +5,12 @@ console.log(txt);
 //2
 var arry= ["Jan", "Feb", "Mar", "Apr","Mai", "Jun"];
 console.log(arry);
+arry.forEach(txt=>{console.log(txt)});
 
 //3
 var pers1={
-    fistname:"nakuul",
+
+    firstname:"nakuul",
     lastname:"metha",
     plz:"1220",
     adress:"Rennbahnweg 2",
@@ -17,24 +19,24 @@ var pers1={
 };
 
 var pers2={
-    fistname:"edy",
+    firstname:"edy",
     lastname:"delegan",
     plz:"1220",
     adress:"Kagraner Platz 12",
     birthd:"24-10-2000"
 };
 var pers3={
-    fistname:"sana",
+    firstname:"sana",
     lastname:"bhutto",
     plz:"1220",
     adress:"Wagramerstr. 162",
     birthd:"19-11-2000"
 }
-]
+
 var ob= [pers1,pers2,pers3];
    
 //4
-ob.array.forEach(person => {
+ob.forEach(person => {
     console.log(`${person.fistname}, ${person.lastname}`);
 });
 
@@ -46,10 +48,20 @@ ob.sort(function (x,y) {
     else if(x.lastname<y.lastname)
             {return -1;}
 
-    else return 0; 
+    return 0; 
     
 });
 
-ob.array.forEach(person => {
+ob.forEach(person => {
     console.log(`${person.fistname}, ${person.lastname}`);
 });
+
+//6
+const fs= require('fs');
+
+try{const data= fs.readFile("persons.db","utf8")
+var persondata=JSON.parse(data)
+}
+catch {
+    console.error('Error', error);
+}

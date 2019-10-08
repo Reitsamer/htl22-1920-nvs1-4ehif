@@ -1,4 +1,5 @@
 const fs = require('fs')
+const moment = require('moment')
 
 // Aufgabe 1
 var s = 'Hallo das ist Nummer 1';
@@ -49,6 +50,7 @@ function compare(a,b){
     }
     return 0;
 }
+// person.sort((a,b) => a.firstname.localeCompare(b.firstname))
 persons.sort(compare);
 console.log('\n\nSorted the Persons Array\n');
 
@@ -68,3 +70,13 @@ try {
   personData.forEach(person => {
     console.log(`${person.lastname}, ${person.firstname}`);
 });
+
+// 7 personData where Age > 18
+
+personData.forEach(p => {
+    var temp = moment().diff('03-10-2019', p.dateOfBirth)
+    console.log(temp);
+    if(temp > 18){
+        console.log(`${p.lastname}, ${p.firstname} born -> ${p.dateOfBirth}`);
+    }
+})
