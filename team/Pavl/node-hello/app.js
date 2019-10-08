@@ -16,6 +16,7 @@ var person={
     age:22,
     adress:'1040, Wien'
 }
+
 console.log(person);
 console.log(person.firstname);
-console.log(`${person.firstname} ${person.lastname} is ${person.age} years old`);
+console.log(`${person.firstname} ${person.lastname} is ${person.age} years old`);//template string back tick 
