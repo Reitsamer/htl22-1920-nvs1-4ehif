@@ -57,3 +57,12 @@ perarr.forEach(p=>{
     i++;
     console.log(`Person${i} Heißt ${p.lastname}, ${p.firstname}`)
 })
+
+const fs=require('fs')
+try{
+    const Data =fs.readFileSync('person.db','utf-8');
+    var personData= JSON.parse(Data)
+}
+catch(err){
+    Console.err('Error:',err)
+}
