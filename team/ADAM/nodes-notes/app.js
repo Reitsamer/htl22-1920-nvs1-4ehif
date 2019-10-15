@@ -1,6 +1,6 @@
 const notes = require('./notes')
+const argv = require('yargs').argv
 
-console.log(process.argv[2]);
 
 // if(command === 'create'){
 //     console.log('Creating note ....');
@@ -12,16 +12,25 @@ console.log(process.argv[2]);
 //     console.error('Unknown command: ', command);
 // }
 
+
+const command = argv._[0]
+
+var title = argv.title
+var body = argv.body
+
 switch (command) {
     case 'create':
-        console.log('Creating note ....');
+        notes.addNote(title, body)
         break;
     case 'read':
-        console.log('Reading note ....');  
+        var note = notes.getNote(title)
+        console.log(note);
         break;
+    case 'list':
+        var allNotes = notes.getAllNotes()        
     case 'remove':
-        console.log('Removing note ....');
+        notes.removeNote(title)
     default:
-        console.error('Unknown command: ', command);
+        console.error('Unknown command: ', command)
         break;
 }
