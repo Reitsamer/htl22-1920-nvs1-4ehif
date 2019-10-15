@@ -5,7 +5,7 @@ const addNote = (title,body) => {
         title:title,
         body: body
     }
-    fs.writeFileSync('notes.db',JSON.stringify(newNote))
+    fs.writeFileSync('notes.db',JSON.stringify(newNote)) 
 }
 
 const getNote = (title) => {
