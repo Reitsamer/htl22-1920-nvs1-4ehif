@@ -24,3 +24,4 @@ var result = numbers.filter(
 );
 
 console.log(`Result: ${result}`);
+
