@@ -2,8 +2,6 @@ const argv = require('yargs').argv
 
 const notes = require('./notes')
 
-console.log(argv)
-
 const command = argv._[0]
 
 var title = argv.title
@@ -13,6 +11,7 @@ if (command === 'create') {
   notes.addNote(title, body)
 } else if (command === 'read') {
   var note = notes.getNote(title)
+  console.log(note)
 } else if (command === 'list') {
   var allNotes = notes.getAllNotes()
 } else if (command === 'remove') {
