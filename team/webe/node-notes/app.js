@@ -11,6 +11,7 @@ if (command === 'create') {
     notes.addNote(title, body);
 } else if (command === 'read') {
     var note = notes.getNote(title);
+    console.log(`Title: ${title}\nBody: ${note.body}`);
 } else if (command === 'list') {
     var allNotes = notes.getAllNotes();
 } else if (command === 'remove') {

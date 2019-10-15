@@ -1,8 +1,16 @@
 const fs = require('fs');
 
-const addNote = (title, body) => {
-    var allNotes = [];
+const fetchAllNotes = () => {
+    try {
+        var existingNotes = fs.readFileSync('notes.json');
+        return JSON.parse(existingNotes);
+    } catch {
+        return [];
+    }
+};
 
+const addNote = (title, body) => {
+    var allNotes = fetchAllNotes();
 
     var newNote = {
         title: title,
@@ -15,7 +23,7 @@ const addNote = (title, body) => {
 };
 
 const getNote = (title) => {
-
+    return fetchAllNotes().find(i => i.title === title);
 };
 
 const getAllNotes = () => {
