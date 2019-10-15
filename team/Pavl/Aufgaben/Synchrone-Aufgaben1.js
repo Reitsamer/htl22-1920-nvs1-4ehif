@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 //Aufgabe 1
 var ctxt='String für Console';
 console.log(ctxt);
@@ -22,17 +24,26 @@ console.log();
 var arrayVonObjekten=[
     {
         firstname:'Marko',
-        surname: 'Pavlovic'
+        surname: 'Pavlovic',
+        zip:1040,
+        adress: 'Donaustadtstrasse 45',
+        dateOfBirth: '24-02-1989'
     },
 
     {
         firstname:'Marcel',
-        surname: 'Nikolic'
+        surname: 'Nikolic',
+        zip:1040,
+        adress: 'Donaustadtstrasse 45',
+        dateOfBirth: '24-02-1989'
     },
 
     {
         firstname:'Marcus',
-        surname: 'Rosel'
+        surname: 'Rosel',
+        zip:1040,
+        adress: 'Donaustadtstrasse 45',
+        dateOfBirth: '24-02-1989'
     }
 ];
 
@@ -46,7 +57,7 @@ console.log();
 //Aufgabe 5
 console.log('Sortierte Ausgabe')
 arrayVonObjekten.sort(
-function(a,b)
+(a,b)=>
 {
     if(a.surname>b.surname)
     {
@@ -63,5 +74,9 @@ console.log(arrayVonObjekten);
 console.log();
 
 //Aufgabe 6
+var data=fs.readFileSync('persons.db','utf-8');
+var personData=JSON.parse(data);
+console.log(personData);
+
 
 

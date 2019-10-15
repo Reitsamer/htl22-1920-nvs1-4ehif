@@ -2,8 +2,6 @@ const argv = require('yargs').argv
 
 const notes = require('./notes')
 
-console.log(argv)
-
 const command = argv._[0]
 
 var title = argv.title
