@@ -52,8 +52,8 @@ perarray.forEach(p=>{
 //6
 var fs = require('fs');
 const data = fs.readFileSync('htl22-1920-nvs1-4ehif/team/Jovan/Homework/persons.db', 'utf8')
-var dat = JSON.parse(data)
-dat.forEach(s => console.log(s))
+var persons = JSON.parse(data)
+persons.forEach(s => console.log(s))
 /*var isurehopethisworks = fs.readFileSync("htl22-1920-nvs1-4ehif/team/Jovan/Homework/persons.db").toString();
 isurehopethisworks = isurehopethisworks.substring(3,isurehopethisworks.length-3)
 console.log(isurehopethisworks)
@@ -96,3 +96,18 @@ itworked.forEach(per=>{
 perarray2.forEach(per=>{
     console.log(per)
 })*/
+// 7.
+// (Hinweis: verwende die Library 'moment' dafür)
+// npm install moment ODER yarn add moment
+var moment = require("moment");
+persons.forEach(p => {
+    var birthdate = moment(p.dateOfBirth, "MMM. D, YYYY");
+    if (!birthdate.isValid()) {
+        console.error(`Invalid birthdate of ${p.dateOfBirth}`);
+        return;
+    }
+    const age = moment().diff(birthdate, 'years');
+    if (age >= 18) {
+        console.log(p.firstname+' '+p.lastname+' '+p.dateOfBirth);
+    }
+});
