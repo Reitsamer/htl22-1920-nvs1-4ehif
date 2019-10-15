@@ -65,7 +65,6 @@ if (process.argv.length !== 3) {
 var fs = require('fs');
 const data = fs.readFileSync(process.argv[2], 'utf8');
 var dat = JSON.parse(data);
-dat.forEach(s => console.log(s));
 // 7. Verwende die in 6. eingelesenen Personen & gib alle Personen aus, die älter als 18 Jahre alt
 // sind
 // (Hinweis: verwende die Library 'moment' dafür)
