@@ -12,7 +12,7 @@ console.log('x:', x);
 
 var person = {
     firstname: 'Jesus Christ',
-    lastname: 'Talitanitus',
+    lastname: 'Talitanitusss',
     age: 22,
     address: '1190, Budinskygasse'
 }
