@@ -18,31 +18,29 @@ const printPerson = (person) => {
 
 if(command === 'convert') {
     var out = converter.convert(input)
-    if(out === false) {
-        console.log(chalk.red("Fehler beim einlesen der Datei!"))
+    if(out.success === false) {
+        console.log(chalk.red(out.message))
     } else {
-        console.log(chalk.green("conversion successful"))
-        out.forEach(element => {
+        console.log(chalk.green(out.message))
+        out.data.forEach(element => {
             printPerson(element)
         });
     }
 } else if (command === 'pick') {
     var out = converter.pickRandom(input)
-    if(out === false) {
-        console.log(chalk.red("Fehler beim einlesen der Datei!"))
+    if(out.success === false) {
+        console.log(chalk.red(out.message))
     } else {
-        console.log(chalk.green("Random pick successful"))
-        printPerson(out)
+        console.log(chalk.green(out.message))
+        printPerson(out.data)
     }
 } else if (command === 'print') {
     var out = converter.getSorted(input, sortby, order)
-    if(out === false) {
-        console.log(chalk.red("Fehler beim einlesen der Datei!"))
-    } else if(out === "Fehler") {
-        console.log(chalk.red("Fehler beim sortieren der Daten!"))
+    if(out.success === false) {
+        console.log(chalk.red(out.message))
     } else {
-        console.log(chalk.green("Sorting successful"))
-        out.forEach(element => {
+        console.log(chalk.green(out.message))
+        out.data.forEach(element => {
             printPerson(element)
         });
     }
