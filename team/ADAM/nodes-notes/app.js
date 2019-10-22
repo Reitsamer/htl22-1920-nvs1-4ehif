@@ -21,15 +21,31 @@ var body = argv.body
 switch (command) {
     case 'create':
         notes.addNote(title, body)
+        if(success === true){
+            console.log('Note addded successfullly.');
+        } else{
+            console.log('Note with the title already exists');
+        }
         break;
     case 'read':
         var note = notes.getNote(title)
         console.log(note);
         break;
     case 'list':
-        var allNotes = notes.getAllNotes()        
+        var allNotes = notes.getAllNotes()
+        allNotes.forEach(n => console.log(n));
+        break; 
     case 'remove':
-        notes.removeNote(title)
+        var success = notes.removeNote(title)
+        if(success === true){
+            console.log('Removed note with title: ', title);
+        } else {
+            console.log(not.title + ' doesn\'t exist');
+        }
+        break;
+    case 'print':
+        notes.printNote(title)
+        break;
     default:
         console.error('Unknown command: ', command)
         break;
