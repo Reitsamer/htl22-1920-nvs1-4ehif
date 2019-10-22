@@ -1,19 +1,10 @@
-console.log("4ehif");
+const os= require("os");
+const fs = require('fs');
 
 
-var x= 10;
-console.log("x:" + x);
-console.log("x:", x)
-console.log(`x:${x}`);
+var x= os.userInfo();
+console.log(x);
 
-x="SLOG"
-console.log("x:", x);
+console.log("hallo, " + x.username+ "!");
 
-var person={
-    firstname: "Wolf",
-    lastname:"Reitsamer",
-    age:22,
-    address: "1190, Hutweiengasse"
-}
-
-console.log(`${person.firstname} ${person.lastname} is ${person.age} years old.`);
+fs.appendFileSync("message.txt",`Hallo, ${x.username}`);
