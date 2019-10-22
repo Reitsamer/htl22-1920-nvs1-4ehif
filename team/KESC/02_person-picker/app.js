@@ -7,7 +7,7 @@ const command = argv._[0];
 
 const input = argv.input;
 const sortby = argv.sortby;
-const order = argv.order
+const order = argv.order;
 
 if (command === 'convert') {
     // Convert full names into first and last name
