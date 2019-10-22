@@ -39,6 +39,8 @@ persons.forEach(element => {
     console.log(`${element.firstname} ${element.lastname}`);
 });
 
+persons.sort((a,b)=> a.firstname.localeCompare(b.firstname));
+
 try {
     const data = fs.readFileSync('persons.db', 'utf8')
     var personData = JSON.parse(data);

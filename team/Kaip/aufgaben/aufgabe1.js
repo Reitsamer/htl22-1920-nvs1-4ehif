@@ -6,33 +6,33 @@ var s = 'Hallo das ist Nummer 1';
 console.log(s);
 
 // Aufgabe 2
-var sArr = ["Yigi", "Filip", "Mario", "Marko"];
+var sArr = ["Peter", "Sebastian", "Kevin", "Jeremy"];
 
 // Aufgabe 3
 var persons = [
     {
-        firstname: 'Filip',
-        lastname: 'Adamovic',
-        age: 17,
-        address: 'Opastraße 4'
+        firstname: 'Sebastian',
+        lastname: 'Kaipel',
+        age: 18,
+        address: 'ich bin eine addresse 2'
     },
     {
-        firstname: 'Mario',
-        lastname: 'Schrolmberger',
+        firstname: 'Peter',
+        lastname: 'Jovanovic',
         age: 17,
-        address: 'Trapstraße 69'
+        address: 'ich bin eine addresse 1'
     },
     {
-        firstname: 'Yigithan',
-        lastname: 'Gundus',
-        age: 15,
-        address: 'Turkmengasse 2'
+        firstname: 'Kevin',
+        lastname: 'Weber',
+        age: 17,
+        address: 'ich bin eine addresse 3'
     },
     {
-        firstname: 'Rahman',
-        lastname: 'Abdulh',
+        firstname: 'Jeremy',
+        lastname: 'Kescher',
         age: 17,
-        address: 'Streetstraße 4'
+        address: 'ich bin eine addresse 4'
     }
 ];
 
@@ -50,7 +50,7 @@ function compare(a,b){
     }
     return 0;
 }
-// person.sort((a,b) => a.firstname.localeCompare(b.firstname))
+
 persons.sort(compare);
 console.log('\n\nSorted the Persons Array\n');
 
@@ -66,17 +66,15 @@ try {
     console.error(err)
   }
 
-//testing if everything worked
   personData.forEach(person => {
     console.log(`${person.lastname}, ${person.firstname}`);
 });
 
-// 7 personData where Age > 18
-
+// 7
 personData.forEach(p => {
     var temp = moment().diff('03-10-2019', p.dateOfBirth)
     console.log(temp);
-    if(temp > 18){
+    if(temp > 17){
         console.log(`${p.lastname}, ${p.firstname} born -> ${p.dateOfBirth}`);
     }
 })
