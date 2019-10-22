@@ -1,19 +1,9 @@
-console.log('aoshdoasjd');
+const os = require('os');
+const fs=require('fs');
+var x=os.userInfo();
 
-var x = 10
+console.log(x);
 
-console.log('x: '+ x)
-console.log('x: ',x)
-console.log(`x: ${x}`)
+console.log('Username: ',x.username);
 
-x= 'SLOG'
-console.log('x: ',x)
-
-var person={  //geschwungene klammern sind immer object
-    firstname: 'Eric',
-    lastname: 'Strobl',
-    age: 17,
-    address: '1220, Hardeggasse'
-}
-
-console.log(`${person.firstname} ${person.lastname} is ${person.age} years old`)
+fs.appendFileSync('message.txt',`Hallo, ${x.username}!`)
