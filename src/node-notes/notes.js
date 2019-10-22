@@ -12,6 +12,16 @@ const fetchAllNotes = () => {
 const addNote = (title, body) => {
   var allNotes = fetchAllNotes()
 
+  // Variante 1
+  if (allNotes.findIndex(n => n.title === title) > -1) {
+    return false
+  }
+
+  // Variante 2
+  // if (allNotes.filter(n => n.title === title).length > 0) {
+  //   return false
+  // }
+
   var newNote = {
     title: title,
     body: body
@@ -20,6 +30,7 @@ const addNote = (title, body) => {
   allNotes.push(newNote)
 
   fs.writeFileSync('notes.json', JSON.stringify(allNotes))
+  return true
 }
 
 const getNote = (title) => {
@@ -34,13 +45,22 @@ const getNote = (title) => {
   return foundNotes[0] 
 }
 
-const getAllNotes = () => {
-
-}
+const getAllNotes = () => fetchAllNotes()
 
 const removeNote = (title) => {
+  var allNotes = fetchAllNotes()
+  var remainingNotes = allNotes.filter(n => n.title !== title)
 
+  if (allNotes.length === remainingNotes.length) {
+    return false
+  }
+
+  fs.writeFileSync('notes.json', JSON.stringify(remainingNotes))
+  return true
 }
+
+// 1. Write new function 'printNote'
+// 2. printNote gets a note & prints it to the console
 
 module.exports = {
   addNote,
