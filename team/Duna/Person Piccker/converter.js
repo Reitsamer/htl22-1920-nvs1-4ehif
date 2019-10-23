@@ -11,32 +11,35 @@ const fetchAllPersons=(input)=>{
         return []
     }
 }
-const convert=(input)=>{
-    var jsonlist;
+var Names=[];
+const makeObject = (input) => {
+    var people = [];
+    input.forEach((name) => {
+        var split = ls.split(name, " ");
+        var person = {
+            lastname: ls.toUpper(split[0]),
+            firstname: split[1]
+        };
+        people.push(person);
+    })
+    console.log(people)
+    return people;
+}
+const convert= (input) => {
     if (!fs.existsSync(input)) {
         return {success:false, message: `${input}+ file not found` }
-      }
-      jsonlist= fs.readFileSync(input)
+    }
+    var jsonlist = fs.readFileSync(input)
     
     var Stringlist= JSON.parse(jsonlist)
     Stringlist.forEach(name=>{
         console.log(name)
     })
     makeObject(Stringlist)
-    fs.writeFileSync('db.json',JSON.stringify(Stringlist))
+    //fs.writeFileSync('db.json',JSON.stringify(Stringlist))
+
+
     return {success:true};
-}
-var Names=[];
-const makeObject=(input)=>{
-    input.forEach(namen=>{
-        var gesplittet= ls.split(namen,' ')
-        gesplittet= "{ lastname: \"" +ls.toUpper(gesplittet[0]) +"\", firstname: \""+gesplittet[1]+"\" }"
-        Names.push(gesplittet) 
-    })
-    Names.forEach(gs=>{
-        console.log(gs)
-    })
-    return Names
 }
 const pickRandom=(input)=>{
 
@@ -53,26 +56,28 @@ const pickRandom=(input)=>{
     
     
 }
+
 const getSorted=(input, sortBy, order)=>{
     var stringlist=fetchAllPersons(input)
     var arr=makeObject(stringlist);
     
-    if(arr===false)
-    {
-        return false;
-    }
+    
+    var sorted;
     if(sortBy === "firstname") {
         if(order === "asc") {
-           
+             sorted = arr.sort((a, b) => a.firstname.localeCompare(b.firstname));
         } else {
-           
+            sorted = arr.sort((a, b)=>b.firstname.localeCompare(a.firstname));
         }
     } else {
         if(order === "asc") {
-            
+             sorted = arr.sort((a,b)=>a.lastname.localeCompare(b.lastname));
         } else {
-            
+             sorted=arr.sort((a,b)=>b.lastname.localeCompare(a.lastname));
         }
+    }
+    return {
+        data:sorted
     }
    
 }
