@@ -1,0 +1,15 @@
+{
+  "name": "debugging",
+  "version": "1.0.0",
+  "description": "",
+  "main": "debugging.js",
+  "scripts": {
+    "start": "node debugging.js",
+    "debug": "node inspect debugging.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "4ehif": "node hello.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
