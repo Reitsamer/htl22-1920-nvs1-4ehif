@@ -51,43 +51,40 @@ const getSorted = (input, sortBy, order) => {
            Jsoned  = JSON.parse(existingdb);
            if(sortBy === "firstname") {
             if(order === "asc") {
-                var sorted = file.sort((a, b) => a.firstname.localeCompare(b.firstname));
-                console.log("firstname sortiert asc")
+                var sorted =  Jsoned.sort((a, b) => a.firstname.localeCompare(b.firstname));
                 return sorted
             } else if (order === "desc") {
-                var sorted = file.sort((a, b) => b.firstname.localeCompare(a.firstname));
-                console.log("firstname sortiert desc")
+                var sorted =  Jsoned.sort((a, b) => b.firstname.localeCompare(a.firstname));
                 return sorted
-            } else {
-                return "Fehler"
-            }
+            } 
         } else {
             if(order === "asc") {
-                var sorted = file.sort((a, b) => a.lastname.localeCompare(b.lastname));
-                console.log("lastname sortiert desc")
+                var sorted = Jsoned.sort((a, b) => a.lastname.localeCompare(b.lastname));
                 return sorted
             } else if (order === "desc") {
-                var sorted = file.sort((a, b) => b.lastname.localeCompare(a.lastname));
-                console.log("lastname sortiert desc")
+                var sorted = Jsoned.sort((a, b) => b.lastname.localeCompare(a.lastname));
                 return sorted
-            } else {
-                return "Fehler"
-            }
-        }
-
-      
+            } 
+        }     
     } catch(err) {
-      console.log("Success= false, message: "+ err)
+      return("Success= false, message: "+ err)
     }
   }
 
   const printPerson = (person) => {
-    splitupperson=person.split(" ")
-       var persono = {
-        "lastname": splitupperson[0],
-        "firstname":  splitupperson[1],       
-      }
-    console.log(chalk.blue(persono.lastname+" , "+ persono.firstname))
+    if(typeof person=== String)
+    {
+      splitupperson=person.split(" ")
+      var persono = {
+       "lastname": splitupperson[0],
+       "firstname":  splitupperson[1],       
+     }
+     console.log(chalk.blue(persono.lastname+" , "+ persono.firstname))
+    }
+    else{
+      console.log(chalk.blue(person.lastname+" , "+person.firstname))
+    }
+  
 }
   
 module.exports = {

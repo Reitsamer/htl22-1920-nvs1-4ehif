@@ -29,4 +29,12 @@ if (command === 'convert') {
     }
 } else if(command==='print'){
     var putmeout=converter.getSorted(input,sortby,order)
+    if(typeof putmeout!= String){
+        console.log(chalk.green("Success = true, data: "))
+        putmeout.forEach(part => {
+            converter.printPerson(part)
+            });
+    } else {       
+        console.log(chalk.red(putmeout))
+    }
 }
