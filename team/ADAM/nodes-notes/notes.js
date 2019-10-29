@@ -11,6 +11,10 @@ const fetchAllNotes = () => {
 const addNote = (title, body) => {
     var allNotes = fetchAllNotes()
 
+    // Variante 2
+    if(allNotes.filter(n => n.title === title).length > 0) {
+        return false;
+    }
     var newNote = {
         title: title,
         body: body
@@ -18,6 +22,7 @@ const addNote = (title, body) => {
     allNotes.push(newNote)
 
     fs.writeFileSync('notes.json', JSON.stringify(allNotes))
+    return true;
 }
 
 const getNote = (title) => {
@@ -35,17 +40,29 @@ const getNote = (title) => {
     return foundNotes[0]; // 3.
 }
 
-const getAllNotes = () => {
-    
-}
+const getAllNotes = () => fetchAllNotes()
 
 const removeNote = (title) => {
+        /*
+    CHALLENGE
+    1. implement 'removeNote' (using filter)
+    2. print in 'app.js' if not has been removed
+    */
+    var allNotes
+    var filtered = fetchAllNotes().filter(n => n.title !== title)
+    fs.writeFileSync('notes.json', JSON.stringify(filtered))
 
+    return filtered.length === fetchAllNotes().length;
 }
 
+const printNote = (title) => {
+    var notes = fetchNotes().filter(n => n.title === title)
+    console.log(notes[0]);
+}
 module.exports = {
     addNote,
     getNote,
     getAllNotes,
-    removeNote
+    removeNote,
+    printNote
 }
