@@ -6,7 +6,9 @@ console.log(x);
 var stringarray=[
     'Alter','Bro','Kollege'
 ]
-console.log(stringarray);
+stringarray.forEach(term=>{
+    console.log(term);
+});
 //Task 3 ------
 
 var person=[{  
@@ -31,6 +33,18 @@ person.forEach(persons=>{
     console.log(`Vorname: ${persons.vorname}, Nachname: ${persons.nachname}`);
 });
 //Task 5 -----
+
+    var sortedpersons=person.sort((a,b)=>{
+        if(a.vorname>b.vorname){
+            return 1;
+        }else if(a.vorname<b.vorname){
+            return -1;
+        }else{
+            return 0;
+        }
+        
+    })
+
 person.sort();
 person.forEach(persons=>{
     console.log(`Vorname: ${persons.vorname}, Nachname: ${persons.nachname}`);
@@ -38,5 +52,13 @@ person.forEach(persons=>{
 //Task 6 ----
 var fs=require('fs');
 
-var contents = fs.readFileSync('persons.json', 'utf8');
-console.log(contents);
+try 
+{
+    const data = fs.readFileSync('persons.json', 'utf-8');
+    var personData = JSON.parse(data);
+    console.log(contents);
+}
+catch(err) 
+{
+console.error('Error', err)
+}

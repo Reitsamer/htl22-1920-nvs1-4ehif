@@ -28,17 +28,17 @@ const makeObject = (file) => {
 const pickRandom = (input) => {
     var file = fetchFile(input)
     if(file === false) {
-        return false
+        return {success: false, message: "Fehler beim einlesen der Datei!"}
     }
-    return lodash.shuffle(file)[0]
+    return {success: true, data: lodash.shuffle(file)[0], message: "Random pick successful"}
 }
 
 const convert = (input) => {
     var file = fetchFile(input)
     if(file === false) {
-        return false
+        return {success: false, message: "Fehler beim einlesen der Datei!"}
     }
-    return makeObject(file)
+    return {success: true, data: makeObject(file), message: "conversion successful"}
 }
 
 const getSorted = (input, sortBy, order) => {
@@ -51,27 +51,24 @@ const getSorted = (input, sortBy, order) => {
         if(order === "asc") {
             var sorted = file.sort((a, b) => a.firstname.localeCompare(b.firstname));
             console.log("firstname sortiert asc")
-            return sorted
+            return {success: true, data: sorted, message: "Sorting firstname asc successful"}
         } else if (order === "desc") {
             var sorted = file.sort((a, b) => b.firstname.localeCompare(a.firstname));
             console.log("firstname sortiert desc")
-            return sorted
-        } else {
-            return "Fehler"
+            return {success: true, data: sorted, message: "Sorting firstname desc successful"}
         }
     } else {
         if(order === "asc") {
             var sorted = file.sort((a, b) => a.lastname.localeCompare(b.lastname));
             console.log("lastname sortiert desc")
-            return sorted
+            return {success: true, data: sorted, message: "Sorting lastname asc successful"}
         } else if (order === "desc") {
             var sorted = file.sort((a, b) => b.lastname.localeCompare(a.lastname));
             console.log("lastname sortiert desc")
-            return sorted
-        } else {
-            return "Fehler"
+            return {success: true, data: sorted, message: "Sorting lastname desc successful"}
         }
     }
+    return {success: false, message: "Fehler beim sortieren der Datei!"}
 }
 
 module.exports = {
