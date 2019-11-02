@@ -8,23 +8,18 @@ const dash = require('yargs').argv;
 
 const convert=(input)=>{
 
-    try{
-        var data=fs.readFileSync(input,'utf-8'); 
-    }catch(err){
-        console.log("Ungültiges Dokument");
-        return;
+    
+    if(!fs.existsSync(input)){
+        return {success:false, message: "Not sucess"};
     }
-     
+    
+    var data=fs.readFileSync(input,'utf-8'); 
+   
     data=JSON.parse(data);
     arrayVonObjekten = makeObject(data);
-
-    if(arrayVonObjekten!==0){
-        fs.writeFileSync("db.json",JSON.stringify(arrayVonObjekten));
-        return true;
-    }
-    else{
-        return false;
-    }
+   
+    fs.writeFileSync("db.json",JSON.stringify(arrayVonObjekten));
+    return {success:true};
 }
 
 const makeObject = (people)=>{
@@ -45,26 +40,24 @@ const makeObject = (people)=>{
 }
 
 const pickRandom=(input)=>{
-    try{
-        var data=fs.readFileSync(input,'utf-8');  
-    }
-    catch(err){
-        //Exception handling
-    }
-   
-    data=JSON.parse(data);
-
-    var rnd=_.shuffle(data);
-
-    if(rnd.length>0){
-        return rnd[0];
-    }
-
-    return false;
+    
+    if (!fs.existsSync(input)) {
+        return { success: false, message: `File does not exists: ${input}` }
+      }
+    
+      const people = JSON.parse(fs.readFileSync(input))
+    
+      const shuffledPeople = _.shuffle(people)
+      return { success: true, data: shuffledPeople[0] }
    
 }
 
 const getSorted=(input,sortBy,order)=>{
+
+    if(!fs.existsSync(input)){
+        return  {success: false, message: "not sucess"};
+    }
+
     var data=fs.readFileSync(input,'utf-8');  
     data=JSON.parse(data);
 
@@ -73,18 +66,14 @@ const getSorted=(input,sortBy,order)=>{
     }else if(order === "desc"){
         var d= _.sortBy(data, sortBy).reverse();
     }
-    if(d.length>0){
-         return d;
-    }
-    
-    return false;
-   
+
+
+    return {success:true, data: d};
 }
 
 const printPerson=(person)=>{
     console.log(chalk.blue("lastname: "+ person.lastname +",     firstname "+ person.firstname));
 }
-
 
 module.exports={
 convert,
