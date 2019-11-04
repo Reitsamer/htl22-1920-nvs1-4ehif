@@ -46,8 +46,7 @@ const getSorted= (input,sortby,order) => {
         return { success: false, message: `File does not exists: ${input}` }
       }
     var allPeople = JSON.parse(fs.readFileSync(input))
-    allPeople= _.orderBy(allPeople,[sortby],[order])
-    return {success:true, data:allPeople}
+    return {success:true, data:_.orderBy(allPeople,[sortby],[order])}
 }
 
 const printPerson= (person) => {
