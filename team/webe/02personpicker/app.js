@@ -34,5 +34,5 @@ if(command === 'convert') {
         });
     }
 } else {
-    console.error('Unknown command:', command)
+    console.error('Unknown command:', command);
 }
