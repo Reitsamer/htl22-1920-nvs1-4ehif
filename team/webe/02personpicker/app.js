@@ -12,7 +12,7 @@ if(command === 'convert') {
     } else {
         console.log(chalk.green(output.message));
         output.data.forEach(element => {
-            conv.printPerson(element)
+            conv.printPerson(element);
         });
     }
 } else if (command === 'pick') {
@@ -30,7 +30,7 @@ if(command === 'convert') {
     } else {
         console.log(chalk.green(output.message));
         output.data.forEach(element => {
-            conv.printPerson(element)
+            conv.printPerson(element);
         });
     }
 } else {
