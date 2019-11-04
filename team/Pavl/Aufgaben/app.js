@@ -1,4 +1,7 @@
 const fs = require('fs');
+var moment = require('moment');
+var _ = require('lodash');
+const countryList = require('countries-list');
 
 //Aufgabe 1
 var ctxt='String für Console';
@@ -77,6 +80,36 @@ console.log();
 var data=fs.readFileSync('persons.db','utf-8');
 var personData=JSON.parse(data);
 console.log(personData);
+console.log();
+
+//Aufgabe 7
+personData.forEach(e=>{
+    var birth = moment(e.dateOfBirth).format("YYYY-MM--DD");
+    const age = moment().diff(e.dateOfBirth,'year');
+    const isLegal = (age >= 18);
+    if(isLegal){
+        console.log(e.lastname," ", e.firstname," ",birth," ",age);
+    }
+});
+
+//Aufgabe 9
+var newmap = _.mapKeys(countryList.countries,(value,key)=>{
+    var name=value.name;
+    value.name=key;
+    value['ID']=value['name'];
+    value['name']=name;
+   return name;
+});
+
+//console.log(newmap.countries)
+
+personData.forEach(e=>{
+    if(newmap[e.country].continent==='EU'){
+        console.log(e);
+        console.log(newmap[e.country].emoji);
+    }
+})
+
 
 
 
