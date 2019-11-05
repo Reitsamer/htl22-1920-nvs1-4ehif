@@ -7,20 +7,44 @@ var input =argv.input
 var sortby=argv.sortby
 var order=argv.order
 
-if(command ==='convert')
-{  
-   var success= converter.convert(input)
-   console.log(success)
-}
-else if (command === 'pick')
+var status
+
+switch(command)
 {
-    var success = converter.pickRandom(input)
-    console.log(success)
-}
-else if(command === 'print')
-{
-    var success = converter.getSorted(input,sortby,order)
-}
-else{
-    console.error('Unknown command:',command)
+    case "convert":
+        status = converter.convert(input)
+        if(status.success===true)
+        {
+            console.log(chalk.green('Success.'))
+        }
+        else
+        {
+            console.log(chalk.red(`Failed: ${status.message}`))
+        }
+        break
+
+    case "pick":
+        status= converter.pickRandom(input)
+        if (status.success === true) 
+        {
+            converter.printPerson(status.data)
+        } 
+        else 
+        {
+            console.log(chalk.red(`Failed: ${status.message}`))
+        }
+        break
+
+    case "print":
+
+        status = converter.getSorted(input,sortby,order)
+        if (status.success === true) 
+        {
+            status.data.forEach(p => converter.printPerson(p))
+        } 
+        else 
+        {
+            console.log(chalk.red(`Failed: ${status.message}`))
+        }
+        break
 }
