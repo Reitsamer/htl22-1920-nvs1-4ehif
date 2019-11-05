@@ -14,6 +14,7 @@ switch(command){
         }
         else
         console.log(chalk.red("fehler " + status.message))
+        break;
     }
     case "pick":{
         status=converter.pickRandom(input)
@@ -22,7 +23,7 @@ switch(command){
         }
         else
         console.log(chalk.red("fehler " + status.message))
-
+        break;
     }
     case "print":{
         var sortBy=argv.sortBy
@@ -35,6 +36,6 @@ switch(command){
         else
         console.log(chalk.red("fehler " + status.message))
 
-
+        break;
     }
 }
