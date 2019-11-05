@@ -65,3 +65,30 @@ var persondata=JSON.parse(data)
 catch {
     console.error('Error', error);
 }
+//7
+personData.forEach(e=>{
+    var birth = moment(e.dateOfBirth).format("YYYY-MM--DD");
+    const age = moment().diff(e.dateOfBirth,'year');
+    const isLegal = (age >= 18);
+    if(isLegal){
+        console.log(e.lastname," ", e.firstname," ",birth," ",age);
+    }
+});
+
+//Aufgabe 9
+var newmap = _.mapKeys(countryList.countries,(value,key)=>{
+    var name=value.name;
+    value.name=key;
+    value['ID']=value['name'];
+    value['name']=name;
+   return name;
+});
+
+//console.log(newmap.countries)
+
+personData.forEach(e=>{
+    if(newmap[e.country].continent==='EU'){
+        console.log(e);
+        console.log(newmap[e.country].emoji);
+    }
+})
