@@ -85,3 +85,14 @@ var persons = JSON.parse(data);
 
 
 
+// 7
+var moment = require('moment');
+
+persons.forEach(e=>{
+    var birth = moment(e.dateOfBirth).format("YYYY-MM--DD");
+    const age = moment().diff(e.dateOfBirth,'year');
+    const isLegal = (age >= 18);
+    if(isLegal){
+        console.log(e.lastname," ", e.firstname," ",birth," ",age);
+    }
+});
