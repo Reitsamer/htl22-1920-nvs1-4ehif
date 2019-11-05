@@ -11,6 +11,8 @@ var status
 
 switch(command)
 {
+    //try{}
+    //catch{e}
     case "convert":
         status = converter.convert(input)
         if(status.success===true)
