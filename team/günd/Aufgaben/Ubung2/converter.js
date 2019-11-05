@@ -3,17 +3,15 @@ const _ = require('lodash')
 const chalk = require('chalk')
 
 const convert = (input) => {
-    try{
-        var allPeople = fs.readFileSync(input)
-        allPeople = JSON.parse(allPeople)
-        allPeople = makeObject(allPeople)
-        fs.writeFileSync('db.json',JSON.stringify(allPeople))
-        return {success:true}
-    }
-    catch
-    {
-        return {success:false,message: `File '${input}' does not exist`}
-    }
+    if (!fs.existsSync(input)) {
+        return { success: false, message: `File does not exists: ${input}` }
+      }
+
+    var allPeople = fs.readFileSync(input)
+    allPeople = JSON.parse(allPeople)
+    allPeople = makeObject(allPeople)
+    fs.writeFileSync('db.json',JSON.stringify(allPeople))
+    return {success:true}
 }
 
 
@@ -31,38 +29,31 @@ const makeObject = (people) =>{
 }
 
 const pickRandom = (input) => {
-    try
-    {
-        var allPeople = JSON.parse(fs.readFileSync(input))
-        allPeople = _.shuffle(allPeople)
-        return {success:true,data:allPeople[0]}
-    }
-    catch
-    {
-        return {success:false,message: `File '${input}' does not exist`}
-    }
+ 
+    if (!fs.existsSync(input)) {
+        return { success: false, message: `File does not exists: ${input}` }
+      }
+
+    var allPeople = JSON.parse(fs.readFileSync(input))
+    allPeople = _.shuffle(allPeople)
+    return {success:true,data:allPeople[0]}
+    
+ 
 }
 
 const getSorted= (input,sortby,order) => {
-   try
-   {
-       var allPeople = JSON.parse(fs.readFileSync(input))
-       allPeople= _.orderBy(allPeople,sortby,order)
-       return {success:true, data:allPeopleSorted}
-   }
-   catch
-   {
-       return {success:false, message:'There was an error'}
-   }
+    if (!fs.existsSync(input)) {
+        return { success: false, message: `File does not exists: ${input}` }
+      }
+    var allPeople = JSON.parse(fs.readFileSync(input))
+    return {success:true, data:_.orderBy(allPeople,[sortby],[order])}
 }
 
 const printPerson= (person) => {
+        console.log(chalk.blue(`${person.lastname},  ${person.firstname}`))
 
-    person.forEach(n=>{
-        console.log(chalk.blue(`${n.lastname} : ${n.firstname}`))
-    })
 }
 
 module.exports={
-    convert, pickRandom,getSorted
+    convert, pickRandom,getSorted,printPerson
 }
