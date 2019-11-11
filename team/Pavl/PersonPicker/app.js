@@ -9,30 +9,30 @@ var order =argv.order;
 
 if(command==="convert"){
    var value= conv.convert(input);
-   if(value===true){
+   if(value.success===true){
        console.log(chalk.green('converting was sucess'));
    }
    else{
-       console.log(chalk.red('was not succes'));
+       console.log(chalk.red(value.message));
    }
     
 }
 else if(command==="pick"){
   var value = conv.pickRandom(input);
-  if(value===false){
-      console.log("was not success");
+  if(value.success===false){
+      console.log(value.message);
   }
   else{
-      conv.printPerson(value);
+      console.log(value.data);
   }
 
 }else if(command==="print"){
     var value=conv.getSorted(input, sortby, order);
-    if(value===false){
-        console.log(chalk.red("sorting was not success"));
+    if(value.success===false){
+        console.log(chalk.red(value.message));
     }
     else{
-        value.forEach(element => {
+        value.data.forEach(element => {
             conv.printPerson(element);
         });
     }

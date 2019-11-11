@@ -36,7 +36,7 @@ const convert= (input) => {
         console.log(name)
     })
     makeObject(Stringlist)
-    //fs.writeFileSync('db.json',JSON.stringify(Stringlist))
+    fs.writeFileSync('db.json',JSON.stringify(Stringlist))
 
 
     return {success:true};

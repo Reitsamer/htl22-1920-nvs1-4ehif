@@ -20,7 +20,7 @@ switch (command) {
   case "pick":
     status = converter.pickRandom(input)
     if (status.success === true) {
-      converter.printPerson(status.data)
+      converter.printPerson(status.datas)
     } else {
       console.log(chalk.red(`Failed: ${status.message}`))
     }
