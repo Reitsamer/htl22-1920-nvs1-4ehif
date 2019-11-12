@@ -7,8 +7,13 @@ var input=argv.input
 var sortBy = argv.sortBy
 var order=argv.order
 if(command==='convert'){
-    converter.convert(input)
-    
+   var ausgabe= converter.convert(input)
+    if(ausgabe.success==true)
+    {
+        console.log(chalk.green("Convert was succesfull."))
+    }else{
+        console.log(chalk.red(ausgabe.message))
+    }
 }else if(command==='pick')
 {
   var result=  converter.pickRandom(input)

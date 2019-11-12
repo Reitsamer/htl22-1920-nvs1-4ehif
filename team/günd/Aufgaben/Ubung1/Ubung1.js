@@ -51,3 +51,30 @@ try {
   } catch (err) {
     console.error(err)
   }
+
+//7
+person.forEach(e=>{
+    const age = moment().diff(e.dateOfBirth,'year');
+    const isLegal = (age >= 18);
+    if(isLegal){
+        console.log(e.lastname," ", e.firstname," ",e.dateOfBirth," ",age);
+    }
+});
+
+
+//9
+var newmap = _.mapKeys(countryList.countries,(value,key)=>{
+    var name=value.name;
+    value.name=key;
+    value['ID']=value['name'];
+    value['name']=name;
+   return name;
+});
+
+
+personData.forEach(e=>{
+    if(newmap[e.country].continent==='EU'){
+        console.log(e);
+        console.log(newmap[e.country].emoji);
+    }
+})
