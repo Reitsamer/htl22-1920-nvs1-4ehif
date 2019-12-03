@@ -10,6 +10,7 @@ if(command==='convert'){
    var ausgabe= converter.convert(input)
     if(ausgabe.success==true)
     {
+        
         console.log(chalk.green("Convert was succesfull."))
     }else{
         console.log(chalk.red(ausgabe.message))
