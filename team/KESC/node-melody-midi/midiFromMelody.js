@@ -3,7 +3,7 @@ const MidiWriter = require('midi-writer-js');
 const buildMidiData = (notes, instrument) => {
     var track = new MidiWriter.Track();
 
-    track.addEvent(new MidiWriter.ProgramChangeEvent({instrument: instrument /* Electric guitar (muted) */}));
+    track.addEvent(new MidiWriter.ProgramChangeEvent({instrument: instrument}));
     notes.forEach(note => {
             var duration;
             switch (note.duration) {
