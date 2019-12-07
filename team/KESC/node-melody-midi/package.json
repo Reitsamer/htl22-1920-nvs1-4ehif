@@ -1,0 +1,11 @@
+{
+  "name": "node-melody-midi",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "midi-writer-js": "1.7.2",
+    "request": "2.88.0",
+    "yargs": "15.0.2"
+  }
+}
