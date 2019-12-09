@@ -1,3 +1,7 @@
+var moment = require('moment');
+var countrieslist = require('countries-list');
+var _ = require('lodash');
+
 // Aufgabe 1
 console.log('// Aufgabe 1');
 var test = 'Ich glaube nicht das jemand diese Nachricht sehen sollte :o';
@@ -69,4 +73,45 @@ persons.forEach(person => {
   console.log(`${person.firstname} ${person.lastname}`);
 });
 
+
+// Aufgabe 7
+console.log('// Aufgabe 7');
+
+persons.forEach(p => {
+  const age = moment().diff(p.dateOfBirth,'year');
+  const isAdult = (age >= 18);
+  if(isAdult){
+      console.log(`Nachname: ${p.lastname} Vorname: ${p.firstname}`);
+  }
+});
+
+// Aufgabe 8
+console.log('// Aufgabe 8');
+
+persons.forEach(p => {
+    var birth = moment(p.dateOfBirth).format("YYYY-MM--DD");
+    const age = moment().diff(p.dateOfBirth,'year');
+    const isAdult = (age >= 18);
+    if(isAdult){
+        console.log(`Nachname: ${p.lastname} Vorname: ${p.firstname} Geburtstag: ${birth} Alter: ${age}`);
+    }
+});
+
+// Aufgabe 9
+console.log('// Aufgabe 9');
+
+var map = _.mapKeys(countrieslist.countries,(value,key)=>{
+  var name=value.name;
+  value.name=key;
+  value['ID']=value['name'];
+  value['name']=name;
+ return name;
+});
+
+persons.forEach(p=>{
+  if(map[p.country].continent==='EU'){
+      console.log(p);
+      console.log(map[p.country].emoji);
+  }
+})
 

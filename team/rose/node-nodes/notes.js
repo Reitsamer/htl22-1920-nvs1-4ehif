@@ -50,8 +50,6 @@ const getNote = (title) =>
 
     return foundNotes[0]; 
 
-    // 4. Print the note in app.js
-
 }
 
 const getAllNotes = () => 
