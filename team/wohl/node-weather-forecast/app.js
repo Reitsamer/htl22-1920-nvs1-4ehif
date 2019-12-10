@@ -11,7 +11,7 @@ var day = yargs.argv.day
 var month = yargs.argv.month
 
 if(command === 'info') {
-console.log('Usable commands: \nmath --num=""\ntrivia --num"number or "random""\ndate --month="" --day=""\nyear --num=""\ngeocode')
+console.log('Usable commands: \nfacts --type="math" --num=""\nfacts --type="trivia" --num"number or "random""\nfacts --type="date" --month="" --day=""\nfacts --type="year" --num=""\ngeocode')
 }
 else if(command === 'geocode') {
     geocode(location, (error, {name, latitude, longitude}) => {
