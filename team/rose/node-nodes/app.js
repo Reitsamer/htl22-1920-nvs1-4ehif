@@ -17,20 +17,27 @@ var body = argv.body
 if (command == 'create')
 {
     console.log('Creating note ...');
-    console.log(note);
-    notes.addNote(title, body);
+    var success = notes.addNote(title, body)
+  if (success === true) 
+  {
+    console.log('Note added successfully.')
+  } 
+  else 
+  {
+    console.log('Note with that title already exists.')
+  }
 }
 else if(command == 'read')
 {
     console.log('Reading note...')
-    notes.getNote(title);
+    var note = notes.getNote(title)
+    console.log(note)
 }
 else if(command == 'list')
 {
     console.log('Listing notes...')
-    var allNotes = notes.getAllNotes();
-    console.log(allNotes);
-    allNotes.foreach(n => console.log(n))
+    var allNotes = notes.getAllNotes()
+    allNotes.forEach(n => console.log(n))
 }
 else if(command == 'remove')
 {
