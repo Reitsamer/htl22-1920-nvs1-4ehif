@@ -17,7 +17,8 @@ const getMaxIndex = () => {
 };
 
 const convert = () => {
-    const maxIndex = getMaxIndex() - 1;
+    let maxIndex = getMaxIndex() - 1;
+    maxIndex = maxIndex.toString().padStart(3, "0");
     ensureExportDir();
     let thumbSource = path.join(importDir, `img${maxIndex}` + format);
     let thumbDest = path.join(exportDir, 'thumb' + maxIndex + format);
