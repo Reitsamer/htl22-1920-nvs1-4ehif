@@ -65,6 +65,10 @@ try{
 
 dat.forEach(s => console.log(`${s.lastname}, ${s.firstname}`))
 
+console.log();
+console.log('---------------------------------------------------------------');
+console.log();
+// 7
 var moment = require("moment");
 dat.forEach(p => {
     var birthdate = moment(p.dateOfBirth, "MMM. D, YYYY");
@@ -74,6 +78,30 @@ dat.forEach(p => {
     }
     const age = moment().diff(birthdate, 'years');
     if (age >= 18) {
-        console.log(p);
+        //console.log(p);
+
+        //8
+        console.log(`${p.lastname}, ${p.firstname}, ${moment(p.dateOfBirth).format('YYYY-MM-DD')}, ${age}`)
     }
 });
+
+// 9
+const {getCode, getName} = require('country-list')
+const countryList = require('countries-list')
+const _ = require('lodash')
+console.log(getCode('Austria'))
+
+var newmap = _.mapKeys(countryList.countries,(value,key)=>{
+  var name=value.name;
+  value.name=key;
+  value['ID']=value['name'];
+  value['name']=name;
+ return name;
+});
+
+dat.forEach(e=>{
+  if(newmap[e.country].continent==='EU'){
+      console.log(e);
+      console.log(newmap[e.country].emoji);
+  }
+})
