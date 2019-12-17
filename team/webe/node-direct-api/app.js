@@ -21,7 +21,7 @@ switch (command) {
         convert();
         break;
     case "info":
-        console.log("Create: \n\tcount (max = 1000) \n\tconnected (1 or 0) \n\tspacing (Space of lines between creation of new pictures)");
+        console.log("Create: \n\tcount (max = 1000) \n\tspacing (Space of lines between creation of new pictures)");
         console.log("Convert: \n\tamount (index of last picture)");
         break;
 }
