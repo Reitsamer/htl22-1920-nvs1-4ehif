@@ -15,10 +15,11 @@ const getMostLikedExplaination = (word, callback) => {
 
 
     function processRequestResponse(error, response, body) {
-        // TODO: work with the answer from request
 
-        console.log(`Error: ${error}`)
-        //console.log(`Body: ${body.list}`)
+        if (error){
+            callback(error)
+            return
+        }
 
         let maxThumbsUp = 0;
         let elementWithMostLikes
@@ -40,6 +41,10 @@ const getMostLikedExplaination = (word, callback) => {
 
         callback(undefined, result)
     }
-
     request(options, processRequestResponse)
+}
+
+module.exports = {
+    // getMostLikedExplaination: getMostLikedExplaination
+    getMostLikedExplaination
 }

@@ -1,33 +1,23 @@
-const request = require('request')
+const urban = require('./urban-dictionary')
+const yargs = require('yargs').argv
 
-const options = {
-    url: 'https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=rofl',
-    headers: {
-        "x-rapidapi-host": "mashape-community-urban-dictionary.p.rapidapi.com",
-        "x-rapidapi-key": "cb98cd4719mshedaf1da841f638bp1cf53djsn1062377ff246"
-    },
-    json: true
-  };
+// node index.js --word=lol
+
+// command: node index.js xxx --option=yyy
+// xxx: yargs._[0]
+// yyy: yargs.option
+
+const word = yargs.word
 
 
-function processRequestResponse(error, response, body){
-    // TODO: work with the answer from request
+urban.getMostLikedExplaination(word, (error, data) => {
+    if (error){
+        console.error('An error occured' + error)
+        return
+    }
 
-    console.log(`Error: ${error}`)
-    //console.log(`Body: ${body.list}`)
 
-    let maxThumbsUp = 0;
-    let elementWithMostLikes
+    console.log(`Thumbs up: ${data.up_votes} - Thumbs down: ${data.down_votes}`)
+    console.log(`Description: ${data.text}`)
 
-    body.list.forEach(element => {
-        if (element.thumbs_up > maxThumbsUp) {
-            elementWithMostLikes = element
-            maxThumbsUp = element.thumbs_up
-        }
-    });
-
-    console.log(`Thumbs up: ${maxThumbsUp}`)
-    console.log(elementWithMostLikes)
-}
-
-request( options, processRequestResponse)
+})
