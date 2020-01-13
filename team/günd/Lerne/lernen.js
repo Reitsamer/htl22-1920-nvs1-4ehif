@@ -2,7 +2,7 @@
 var request = require('request');
 var yargs = require('yargs').argv;  // ./aus dem File raus, .. für ordner
 var _ = require('lodash');
-var moment = require('moment');
+// var moment = require('moment');
 
 //yargs 
 // command: node index.js xxx --option=yyy
@@ -21,6 +21,10 @@ var moment = require('moment');
 //         maxThumbUp = element.thumbs_up
 //       }
 //     });
+
+const calculate = (name,callback) =>{
+    callback(undefined, "Hallo")
+}
 
 //Callback
 const geocode = (location, callback) => {
@@ -94,5 +98,5 @@ const myAsycLoveFunc = async (firstName, secondName) => {  //Async vor parameter
 
 // Methode exportieren
 module.exports = {
-    calculate
+    calculate, geocode
 }
