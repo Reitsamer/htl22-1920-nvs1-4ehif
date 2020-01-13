@@ -22,10 +22,6 @@ var _ = require('lodash');
 //       }
 //     });
 
-const calculate = (name,callback) =>{
-    callback(undefined, "Hallo")
-}
-
 //Callback
 const geocode = (location, callback) => {
     //location = encodeURIComponent(location)
