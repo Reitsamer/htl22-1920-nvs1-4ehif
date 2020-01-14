@@ -1,0 +1,47 @@
+Kochrezept:
+-----------
+
+1. Verzeichnis erstellen (z.B. node-urban-dictionary)
+2. VS Code: File -> Open Folder (node-urban-dictionary)
+3. VS Code: Verzeichnisse erstellen ('src' und 'tests')
+4. In 'src' Start-File erstellen (z.B. 'index.js' oder 'app.js')
+5. Terminal öffnen (ACHTUNG: Verzeichnis muss 'node-urban-dictionary' sein)
+6. 'npm init -y'
+
+OPTIONAL (Debugger einrichten):
+
+7. Auf den Käfer drücken -> 'Create a launch.json file' link klicken
+   (ggf. 'Node.js' aus drop-down Liste wählen)
+   --> Erzeugt: .vscode/launch.json
+8. "program" auf richtiges File setzen
+
+INDIVIDUELLE AUFGABENSTELLUNG:
+
+9. npm -i <package> (z.B. request)
+
+ALLGEMEIN:
+
+10. Modul aus Funktionalität extrahieren (z.B. urban-dictionary.js)
+
+DEBUGGING:
+
+11. "args": ["name", "value"]  (in launch.json hinzufügen)
+
+
+ALLERLEI:
+
+- Parameter in URL:
+  *) 1. Paramter: ? (z.B. "?name=hugo")
+  *) jeden weiteren Parameter: & (z.B. "&ort=wien")
+
+
+Für Promises:
+- ganze Funktionalität mit
+  "return new Promise((resolve, reject) => { ... })"
+  umgeben.
+
+Nützliche Links:
+----------------
+*) https://www.npmjs.com
+*) https://code.visualstudio.com/docs/editor/debugging
+*) https://jestjs.io/docs/en/asynchronous

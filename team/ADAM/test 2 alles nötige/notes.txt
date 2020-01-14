@@ -1,0 +1,24 @@
+dont forget
+
+1.) enter right dir
+2.) dont forget npm init -y
+3.) set json:true
+4.) https://postwoman.io/ or (extension) https://chrome.google.com/webstore/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm
+5.) === exists
+6.) ``
+7.) npm i jest --save -dev
+8.) body.list.forEach()
+
+// yargs
+// command: node index.js xxx --option=yyy
+// xxx: const command = yargs._[0]
+// yyy: const option = yargs.option
+
+JEST
+
+test('the data is peanut butter', done => {
+    function callback(data) {
+      expect(data).toBe(undefined);  // callback(undefined,data) --> will always return undefined
+      done();
+    }
+
