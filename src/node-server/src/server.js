@@ -31,34 +31,14 @@ const getContentType = (fileExtension) => {
   return (type === undefined) ? null : type
 }
 
-server.on('request', (req, res) => {
+const sendError = (res, errorCode) => {
+  res.statusCode = errorCode
+  res.setHeader('Content-Type', 'text/html')
+  res.write(`<h1>Error: ${errorCode}</h1>`)
+  res.end()
+}
 
-  let fullPath = getFileName(req)
-  let fileExtension = getFileExtension(fullPath)
-  let contentType = getContentType(fileExtension)
-
-  if (contentType === null) {
-    res.writeHead(400, {
-      'Content-Type': 'text/html'
-    })
-  
-    res.end(`Unsupported content-type: ${fileExtension}`)
-    return
-  }
-
-  // Hier wissen wir, dass wir den content-type unterstützen
-
-  // Haben wir das verlangte File?
-  if (!fs.existsSync(fullPath)) {
-    res.writeHead(404, {
-      'Content-Type': 'text/html'
-    })
-  
-    res.end(`No such resource: ${fullPath}`)
-    return
-  }
-
-  // Alles ok -> send file content with correct content-type
+const sendFile = (res, contentType, fullPath) => {
   let content = fs.readFileSync(fullPath)
 
   res.writeHead(200, {
@@ -66,6 +46,29 @@ server.on('request', (req, res) => {
   })
 
   res.end(content)
+}
+
+server.on('request', (req, res) => {
+
+  let fullPath = getFileName(req)
+  let fileExtension = getFileExtension(fullPath)
+  let contentType = getContentType(fileExtension)
+
+  if (contentType === null) {
+    return sendError(res, 400)
+  }
+
+  // Hier wissen wir, dass wir den content-type unterstützen
+
+  // Haben wir das verlangte File?
+  if (!fs.existsSync(fullPath)) {
+    sendError(res, 404)
+    return
+  }
+
+  // Alles ok -> send file content with correct content-type
+  sendFile(res, contentType, fullPath)
+  
 })
 
 server.listen(8080, () => {
