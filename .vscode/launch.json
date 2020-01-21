@@ -11,8 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "args": ["--word", "value"],
-            "program": "${workspaceFolder}\\node-urban-dictionary\\src\\index.js"
+            "program": "${workspaceFolder}\\team\\azab\\node-excam\\src\\app.js"
         }
     ]
 }

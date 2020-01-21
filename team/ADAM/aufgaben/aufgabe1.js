@@ -1,5 +1,7 @@
 const fs = require('fs')
 const moment = require('moment')
+var _ = require('lodash');
+const countryList = require('countries-list');
 
 // Aufgabe 1
 var s = 'Hallo das ist Nummer 1';
@@ -80,3 +82,42 @@ personData.forEach(p => {
         console.log(`${p.lastname}, ${p.firstname} born -> ${p.dateOfBirth}`);
     }
 })
+
+console.log('\n\n Nummer 7');
+// 7
+var oldpersonData = []
+personData.forEach(person => {
+    if(moment().diff(person.dateOfBirth, 'years') >= 18) {
+        console.log(`${person.lastname}, ${person.firstname}`);
+        oldpersonData.push(person)
+    }
+})
+ 
+ 
+// 8
+oldpersonData.forEach(person => {
+    var age = moment().diff(person.dateOfBirth, 'years')
+    console.log(`${person.lastname}, ${person.firstname}, ${person.dateOfBirth}, ${age}`);
+})
+ 
+ 
+// 9
+
+//Aufgabe 9
+var newmap = _.mapKeys(countryList.countries,(value,key)=>{
+    var name=value.name;
+    value.name=key;
+    value['ID']=value['name'];
+    value['name']=name;
+   return name;
+});
+
+//console.log(newmap.countries)
+
+personData.forEach(e=>{
+    if(newmap[e.country].continent==='EU'){
+        console.log(e);
+        console.log(newmap[e.country].emoji);
+    }
+})
+
