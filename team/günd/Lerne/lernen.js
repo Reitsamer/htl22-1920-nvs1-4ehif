@@ -94,5 +94,5 @@ const myAsycLoveFunc = async (firstName, secondName) => {  //Async vor parameter
 
 // Methode exportieren
 module.exports = {
-    calculate, geocode
+    geocode
 }

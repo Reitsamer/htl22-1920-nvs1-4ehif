@@ -31,7 +31,7 @@ const forecast = (latitude, longitude, callback) => {
         }
 
 
-        //todo:return data
+        
         callback(undefined, data)
     })
 }
