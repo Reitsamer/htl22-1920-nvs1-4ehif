@@ -27,7 +27,7 @@ request(options, function (error, response, body) {
       return
  }
 
-    var data = { name: response.body.name,}
+    var data = { name: body.powerdBy}
     
     callback(undefined, body);
 });
